@@ -25,7 +25,7 @@ The upload process seem to successed but, downloading the image through the `htt
 
 If you try to open the link printed to the console in a separate tab, it will display an execution limit error.
 
-![](./assets/output3.png)
+![](./assets/output2.png)
 
 It is worth to note that same process with a smaller file such [mike-dorner-sf_1ZDA1YFw-unsplash.jpg](./assets/mike-dorner-sf_1ZDA1YFw-unsplash.jpg) works out.
 
