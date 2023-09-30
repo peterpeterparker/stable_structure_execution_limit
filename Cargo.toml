@@ -1,0 +1,4 @@
+[workspace]
+members = [
+    "src/stable_structure_execution_limit_backend",
+]

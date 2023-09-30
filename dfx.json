@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "canisters": {
+    "stable_structure_execution_limit_backend": {
+      "type": "rust",
+      "package": "stable_structure_execution_limit_backend",
+      "candid": "src/stable_structure_execution_limit_backend/stable_structure_execution_limit_backend.did"
+    }
+  },
+  "defaults": {
+    "build": {
+      "packtool": "",
+      "args": ""
+    }
+  }
+}

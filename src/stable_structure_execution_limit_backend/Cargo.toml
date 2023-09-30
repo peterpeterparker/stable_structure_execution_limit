@@ -1,0 +1,26 @@
+[package]
+name = "stable_structure_execution_limit_backend"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+candid = "0.9.3"
+ic-cdk = "0.11.0"
+ic-cdk-macros = "0.8.0"
+serde = "1.0.182"
+serde_bytes = "0.11.12"
+serde_cbor = "0.11.2"
+regex = "1.9.3"
+ic-certified-map = "0.4.0"
+sha2 = "0.10.7"
+base64 = "0.13.1"
+url = "2.4.0"
+globset = "0.4.13"
+hex = "0.4.3"
+ic-stable-structures = "0.6.0-beta.1"
+ciborium = "0.2.1"
