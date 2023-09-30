@@ -45,7 +45,7 @@ pub fn create_token(
 }
 
 pub fn build_headers(
-    url: &str,
+    _url: &str,
     asset: &Asset,
     encoding: &AssetEncoding,
     encoding_type: &String,

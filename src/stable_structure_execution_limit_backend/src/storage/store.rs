@@ -1,24 +1,18 @@
-use crate::msg::{
-    ERROR_CANNOT_COMMIT_BATCH,
-};
+use crate::msg::ERROR_CANNOT_COMMIT_BATCH;
 use crate::shared::utils::principal_not_equal;
 use candid::Principal;
 use ic_cdk::api::time;
 use std::collections::HashMap;
 
-use crate::storage::constants::{
-    ASSET_ENCODING_NO_COMPRESSION,  ENCODING_CERTIFICATION_ORDER,
-};
+use crate::storage::constants::{ASSET_ENCODING_NO_COMPRESSION, ENCODING_CERTIFICATION_ORDER};
 use crate::storage::runtime::{
     clear_batch as clear_runtime_batch, clear_expired_batches as clear_expired_runtime_batches,
-    clear_expired_chunks as clear_expired_runtime_chunks,
- get_batch as get_runtime_batch,
-    get_chunk as get_runtime_chunk,
-    insert_batch as insert_runtime_batch, insert_chunk as insert_runtime_chunk,
+    clear_expired_chunks as clear_expired_runtime_chunks, get_batch as get_runtime_batch,
+    get_chunk as get_runtime_chunk, insert_batch as insert_runtime_batch,
+    insert_chunk as insert_runtime_chunk,
 };
 use crate::storage::state::{
-    get_asset as get_state_asset,
-    get_public_asset as get_state_public_asset,
+    get_asset as get_state_asset, get_public_asset as get_state_public_asset,
     insert_asset as insert_state_asset,
 };
 use crate::storage::types::http_request::{MapUrl, PublicAsset};
@@ -227,7 +221,7 @@ fn commit_batch_impl(caller: Principal, commit_batch: CommitBatch) -> Result<(),
     match batch {
         None => Err(ERROR_CANNOT_COMMIT_BATCH.to_string()),
         Some(b) => {
-            let asset = secure_commit_chunks(caller, commit_batch, &b);
+            let _asset = secure_commit_chunks(caller, commit_batch, &b);
             Ok(())
         }
     }
@@ -253,7 +247,7 @@ fn secure_commit_chunks(
 }
 
 fn secure_commit_chunks_update(
-    caller: Principal,
+    _caller: Principal,
 
     commit_batch: CommitBatch,
     batch: &Batch,

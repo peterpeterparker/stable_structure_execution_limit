@@ -5,18 +5,13 @@ use ic_stable_structures::DefaultMemoryImpl;
 use ic_stable_structures::StableBTreeMap;
 use std::cell::RefCell;
 
-const UPGRADES: MemoryId = MemoryId::new(0);
-const ASSETS: MemoryId = MemoryId::new(1);
+const ASSETS: MemoryId = MemoryId::new(2);
 
 thread_local! {
     pub static STATE: RefCell<State> = RefCell::default();
 
     static MEMORY_MANAGER: RefCell<MemoryManager<DefaultMemoryImpl>> =
         RefCell::new(MemoryManager::init(DefaultMemoryImpl::default()));
-}
-
-pub fn get_memory_upgrades() -> Memory {
-    MEMORY_MANAGER.with(|m| m.borrow().get(UPGRADES))
 }
 
 fn get_memory_assets() -> Memory {

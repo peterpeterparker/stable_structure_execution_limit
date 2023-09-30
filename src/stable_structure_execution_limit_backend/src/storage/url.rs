@@ -39,24 +39,6 @@ pub fn map_alternative_paths(path: &String) -> Vec<String> {
     }
 }
 
-pub fn alternative_paths(full_path: &FullPath) -> Option<Vec<String>> {
-    // e.g. search to split index.js or index.html or .well-known
-    let extensions: Vec<&str> = full_path.split('.').collect();
-
-    let extension = extensions.last().unwrap_or(&"").trim();
-
-    if extension != "html" {
-        return None;
-    }
-
-    // regardless of the configuration, the root file matches always /
-    if full_path == "/index.html" {
-        return Some(Vec::from(["/".to_string()]));
-    }
-
-    aliased_by(full_path)
-}
-
 /// BEGIN: From DFINITY certified asset canister
 
 // path like /path/to/my/asset should also be valid for /path/to/my/asset.html or /path/to/my/asset/index.html
@@ -67,22 +49,6 @@ fn aliases_of(key: &String) -> Vec<String> {
         vec![format!("{}.html", key), format!("{}/index.html", key)]
     } else {
         Vec::new()
-    }
-}
-
-// Determines possible original keys in case the supplied key is being aliaseded to.
-// Sort-of a reverse operation of `alias_of`
-fn aliased_by(key: &String) -> Option<Vec<String>> {
-    if key.ends_with("/index.html") {
-        Some(vec![
-            key[..(key.len() - 5)].into(),
-            key[..(key.len() - 10)].into(),
-            key[..(key.len() - 11)].to_string(),
-        ])
-    } else if key.ends_with(".html") {
-        Some(vec![key[..(key.len() - 5)].to_string()])
-    } else {
-        None
     }
 }
 

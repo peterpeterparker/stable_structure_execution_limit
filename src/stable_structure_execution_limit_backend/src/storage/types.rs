@@ -13,7 +13,6 @@ pub mod state {
     pub type Chunks = HashMap<u128, Chunk>;
 
     pub type AssetsStable = StableBTreeMap<StableFullPath, Asset, Memory>;
-    pub type AssetsHeap = HashMap<FullPath, Asset>;
 
     #[derive(CandidType, Serialize, Deserialize, Clone, PartialEq, Eq, PartialOrd, Ord, Hash)]
     pub struct StableFullPath {
@@ -226,21 +225,5 @@ pub mod http_request {
     pub struct PublicAsset {
         pub url: String,
         pub asset: Option<Asset>,
-    }
-}
-
-pub mod domain {
-    use candid::CandidType;
-    use serde::{Deserialize, Serialize};
-    use std::collections::HashMap;
-
-    pub type DomainName = String;
-    pub type CustomDomains = HashMap<DomainName, CustomDomain>;
-
-    #[derive(CandidType, Serialize, Deserialize, Clone)]
-    pub struct CustomDomain {
-        pub bn_id: Option<String>,
-        pub created_at: u64,
-        pub updated_at: u64,
     }
 }
