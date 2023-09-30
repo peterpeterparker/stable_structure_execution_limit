@@ -1,5 +1,4 @@
 use crate::storage::types::http_request::MapUrl;
-use crate::storage::types::state::FullPath;
 use std::path::Path;
 use url::{ParseError, Url};
 

@@ -5,6 +5,7 @@ mod shared;
 mod storage;
 mod types;
 
+use crate::memory::{init_stable_state, STATE};
 use crate::storage::http::{
     build_encodings, build_headers, create_token, error_response, streaming_strategy,
 };
@@ -19,10 +20,9 @@ use crate::storage::types::interface::{
     CommitBatch, InitAssetKey, InitUploadResult, UploadChunk, UploadChunkResult,
 };
 use crate::storage::types::store::Asset;
+use crate::types::state::{RuntimeState, State};
 use ic_cdk::api::{caller, trap};
 use ic_cdk_macros::{export_candid, init, query, update};
-use crate::memory::{init_stable_state, STATE};
-use crate::types::state::{RuntimeState, State};
 
 #[init]
 fn init() {
